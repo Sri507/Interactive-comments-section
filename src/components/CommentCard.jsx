@@ -8,7 +8,7 @@ const CommentCard = ({ data, comment, handleSubmit }) => {
   if (data?.length !== 0) {
     var imgSrc = data.image.slice(1);
 
-    imgSrc = `../../src/assets${imgSrc}`;
+    imgSrc = `/Interactive-comments-section/src/assets${imgSrc}`;
   }
 
   const divStyle = {

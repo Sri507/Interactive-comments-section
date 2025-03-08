@@ -4,6 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: /Interactive-comments-section/,
+  base: "/Interactive-comments-section/",
   plugins: [react(), tailwindcss()],
 });

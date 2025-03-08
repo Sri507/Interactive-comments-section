@@ -1,12 +1,11 @@
 {
-  "homepage": "https://sri507.github.io/Interactive-comments-section",
   "name": "interactive-comments-section",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",

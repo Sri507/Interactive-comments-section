@@ -1,10 +1,20 @@
 import React, { useEffect, useState, useRef } from "react";
 import CommentCard from "./components/CommentCard";
 import ProfileReplyCard from "./components/ProfileReplyCard";
-import juliusomo from "./assets/images/avatars/image-juliusomo.png";
 import DeleteComment from "./components/DeleteComment";
+import juliusomo from "./assets/images/avatars/image-juliusomo.png";
+import amyrobson from "./assets/images/avatars/image-amyrobson.png";
+import maxblagun from "./assets/images/avatars/image-maxblagun.png";
+import ramsesmiron from "./assets/images/avatars/image-ramsesmiron.png";
 
 const App = () => {
+  const img = {
+    juliusomo: juliusomo,
+    amyrobson: amyrobson,
+    maxblagun: maxblagun,
+    ramsesmiron: ramsesmiron,
+  };
+
   let data = [
     {
       id: 1,
@@ -141,12 +151,14 @@ const App = () => {
               handleSubmit={handleSubmit}
               handleDeleteT={handleDeleteT}
               handleDeleteID={handleDeleteID}
+              img={img}
             />
           ) : (
             <CommentCard
               data={item}
               comment={comment}
               handleSubmit={handleSubmit}
+              img={img}
             />
           )}
           <div className="border-l-[0.125rem] border-(--light-gray) md:ml-[2.6rem]">
@@ -163,12 +175,14 @@ const App = () => {
                         handleSubmit={handleSubmit}
                         handleDeleteT={handleDeleteT}
                         handleDeleteID={handleDeleteID}
+                        img={img}
                       />
                     ) : (
                       <CommentCard
                         data={nitem}
                         comment={comment}
                         handleSubmit={handleSubmit}
+                        img={img}
                       />
                     )}
                   </div>

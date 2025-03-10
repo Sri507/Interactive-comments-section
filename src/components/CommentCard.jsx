@@ -4,17 +4,16 @@ import minus from "../assets/images/icon-minus.svg";
 import reply from "../assets/images/icon-reply.svg";
 import Reply from "./Reply";
 
-const CommentCard = ({ data, comment, handleSubmit }) => {
-  if (data?.length !== 0) {
-    var imgSrc = data.image.slice(1);
+const CommentCard = ({ data, comment, handleSubmit, img }) => {
+  let getImg;
 
-    imgSrc = `/Interactive-comments-section/src/assets${imgSrc}`;
-  }
+  Object.keys(img).map((item) => {
+    if (item === data.username) {
+      getImg = img[item];
+    }
+    return item;
+  });
 
-  const divStyle = {
-    backgroundImage: `url(${imgSrc})`,
-    backgroundSize: "contain",
-  };
   const [replyB, setReplyB] = useState(false);
   const [addS, setAddS] = useState(data.add);
   const [minusS, setMinusS] = useState(data.sub);
@@ -105,10 +104,10 @@ const CommentCard = ({ data, comment, handleSubmit }) => {
             className="w-9 p-3 cursor-pointer"
           />
         </div>
-        <div className="w-full">
+        <div className="w-full overflow-hidden">
           <div className="md:flex md:justify-between items-center mb-4">
             <div className="flex items-center gap-4">
-              <div style={divStyle} className="size-8"></div>
+              <img src={getImg} alt="profile_picture" className="size-8" />
               <div className="text-[var(--dark-blue)] font-medium text-base">
                 {data.username}
               </div>
@@ -124,11 +123,11 @@ const CommentCard = ({ data, comment, handleSubmit }) => {
               </div>
             </div>
           </div>
-          <div className="text-[var(--grayish-blue)] mb-4 md:mb-0">
+          <div className="text-[var(--grayish-blue)] mb-4 md:mb-0 break-words">
             {data.replyTo === "" ? (
               data.content
             ) : (
-              <div>
+              <div className="break-words">
                 <span className="text-[var(--moderate-blue)] font-medium">
                   @{data.replyTo}{" "}
                 </span>

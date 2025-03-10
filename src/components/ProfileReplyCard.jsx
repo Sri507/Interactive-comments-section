@@ -10,17 +10,16 @@ const ProfileReplyCard = ({
   handleSubmit,
   handleDeleteT,
   handleDeleteID,
+  img,
 }) => {
-  if (data?.length !== 0) {
-    var imgSrc = data.image.slice(1);
+  let getImg;
 
-    imgSrc = `/Interactive-comments-section/src/assets${imgSrc}`;
-  }
-
-  const divStyle = {
-    backgroundImage: `url(${imgSrc})`,
-    backgroundSize: "contain",
-  };
+  Object.keys(img).map((item) => {
+    if (item === data.username) {
+      getImg = img[item];
+    }
+    return item;
+  });
 
   const textAreaRef = useRef(null);
   const [reply, setReply] = useState(`@${data.replyTo}, ${data.content}`);
@@ -142,10 +141,10 @@ const ProfileReplyCard = ({
             className="w-9 p-3 cursor-pointer"
           />
         </div>
-        <div className="w-full">
+        <div className="w-full overflow-hidden">
           <div className="md:flex md:justify-between items-center mb-4">
             <div className="flex items-center gap-4">
-              <div style={divStyle} className="size-8"></div>
+              <img src={getImg} alt="profile_picture" className="size-8" />
               <div className="text-[var(--dark-blue)] font-medium text-base">
                 {data.username}
               </div>
@@ -176,11 +175,11 @@ const ProfileReplyCard = ({
             </div>
           </div>
           {updateB === false ? (
-            <div className="text-[var(--grayish-blue)] transition-all">
+            <div className="text-[var(--grayish-blue)] transition-all break-words">
               {data.replyTo === "" ? (
                 data.content
               ) : (
-                <div>
+                <div className="break-words">
                   <span className="text-[var(--moderate-blue)] font-medium">
                     @{data.replyTo}{" "}
                   </span>
